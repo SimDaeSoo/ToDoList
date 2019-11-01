@@ -1,0 +1,25 @@
+{
+  "name": "kakao_mobility_front_homework",
+  "version": "1.0.0",
+  "description": "first homework for kakao mobility front developer",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework.git"
+  },
+  "keywords": [
+    "vue.js",
+    "typescript",
+    "webpack4",
+    "babel",
+    "scss"
+  ],
+  "author": "daesoo94",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/issues"
+  },
+  "homepage": "https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework#readme"
+}
