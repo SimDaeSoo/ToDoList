@@ -1,9 +1,9 @@
-class Storage {
-    private static _instance: Storage;
+class LocalStorage {
+    private static _instance: LocalStorage;
 
-    public static get instance(): Storage {
+    public static get instance(): LocalStorage {
         if (!this.instance === undefined) {
-            this._instance = new Storage();
+            this._instance = new LocalStorage();
         }
         return this._instance;
     }
@@ -21,4 +21,4 @@ class Storage {
     }
 }
 
-export default Storage.instance;
+export default LocalStorage.instance;
