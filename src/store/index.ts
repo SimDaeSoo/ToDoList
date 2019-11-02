@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { Dictionary } from "vue-router/types/router";
 
 Vue.use(Vuex);
 
