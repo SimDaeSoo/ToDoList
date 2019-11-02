@@ -11,7 +11,7 @@ HTML 템플릿은 자유, 수퍼 셋 언어 SASS/SCSS, TypeScript 활용
 
 Detail한 요구사항은 [HOMEWORK.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/HOMEWORK.md)참조  
 
-## 문제를 풀어나가는 과정 (History of Problem Solution)
+## 문제를 풀어나가는 과정 (History of Problem Solve)
 [SOLUTION.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/SOLUTION.md)참조  
 
 ## 개발 환경 (Environments)
@@ -25,11 +25,14 @@ Detail한 요구사항은 [HOMEWORK.md](https://github.com/SimDaeSoo/Kakao_Mobil
 Dependency install
 ```sh
 $ npm install
-```
+$ npm install --unsafe-perm // 만약 sass-loader 때문에 문제가 생긴다면 다음과 같이 설치.
+```  
+
 Build and run as develop mode
 ```sh
 $ npm start
-```
+```  
+
 Build and run as production mode
 ```sh
 $ npm run build

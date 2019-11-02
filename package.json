@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "first homework for kakao mobility front developer",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework.git"
