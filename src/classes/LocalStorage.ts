@@ -8,15 +8,11 @@ class LocalStorage {
         return this._instance;
     }
 
-    public load(): any {
+    public load(): { articles: Array<IArticle>, autoSave: boolean } {
         console.error('not maked load');
     }
 
-    public export(): any {
-        console.error('not maked export');
-    }
-
-    public save(): any {
+    public save(data: { articles: Array<IArticle>, autoSave: boolean }): void {
         console.error('not maked save')
     }
 }

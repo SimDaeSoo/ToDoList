@@ -1,7 +1,8 @@
-import Articles from './Articles';
-import Dictionary from './Dictionary';
+import { IArticle, ITag } from './IArticle';
+import { Dictionary } from './Default';
 
 export {
-    Articles,
+    IArticle,
+    ITag,
     Dictionary
 }
