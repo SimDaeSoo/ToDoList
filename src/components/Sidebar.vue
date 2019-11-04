@@ -11,8 +11,8 @@
       </li>
       <SidebarColum
         v-for="(item,index) in categories"
-        :key="'categories'+index"
-        :name="'categories'"
+        :key="'category'+index"
+        :name="'category'"
         :type="item"
       />
 

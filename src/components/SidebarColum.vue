@@ -16,7 +16,7 @@ export default class SidebarColum extends Vue {
 
   private linkTo(to: string): void {
     if (this.$router.currentRoute.path.replace(/\//g, '') !== to.replace(/\//g, '')) {
-      this.$router.push(to);
+      this.$router.push(to.toLowerCase());
     }
   }
 }
