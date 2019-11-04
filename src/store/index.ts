@@ -7,6 +7,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        defaultCategories: ['All', 'Upcoming', 'Important', 'Done'],
+        defaultTags: ['All'],
         articles: [],
         autoSave: false
     },
@@ -17,6 +19,12 @@ export const store = new Vuex.Store({
         autoSave: (state): boolean => {
             return state.autoSave;
         },
+        categories: (state): Array<string> => {
+            return state.defaultCategories;
+        },
+        tags: (state): Array<string> => {
+            return state.defaultTags.concat([]);
+        }
     },
     mutations: {
         loadArticles: (state): void => {

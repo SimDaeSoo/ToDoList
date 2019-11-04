@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    box-shadow: 2px 2px 2px #00000044;
+    background: #DB5A48;
+    font-size: 2.5em;
+    color: white;
+    text-align: left;
+    padding: 20px 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
+}
+
+.header .category {
+    padding-left: 20px;
+}
+
+@media (min-width: 48em) {
+    .header {
+        margin: 0px 0px 20px 0px;
+        border-radius: 4px;
+    }
+}

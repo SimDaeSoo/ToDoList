@@ -1,5 +1,7 @@
 <template>
-  <div class="header">Header</div>
+  <div class="header">
+    <a class="category"># {{type}}</a>
+  </div>
 </template>
 
 <script lang = "ts">
@@ -7,8 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Header extends Vue {
-  private toggle(): void {
-    (this.$refs.closeNav as HTMLElement).click();
-  }
+  @Prop()
+  private type: string;
 }
 </script>

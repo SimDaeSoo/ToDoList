@@ -1,32 +1,45 @@
 <template>
   <div class="sidebar">
+    <a class="logo">- TODO List</a>
     <input class="menu-btn" type="checkbox" id="menu-btn">
     <label class="menu-icon" for="menu-btn" ref="closeNav">
       <span class="navicon"></span>
     </label>
-    <ul class="menu">
-      <li>
-        <a @click="linkTo('/')">· All list</a>
+    <ul class="menu" @click="toggle">
+      <li class="category">
+        <a># Category</a>
       </li>
-      <li>
-        <a @click="linkTo('upcoming')">· Upcoming</a>
+      <SidebarColum
+        v-for="(item,index) in categories"
+        :key="index"
+        :name="'category'"
+        :type="item"
+      />
+
+      <li class="category">
+        <a># Tags</a>
       </li>
-      <li>
-        <a @click="linkTo('importants')">· Importants</a>
-      </li>
+      <SidebarColum v-for="(item,index) in tags" :key="index" :name="'tags'" :type="item"/>
     </ul>
   </div>
 </template>
 
 <script lang = "ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import SidebarColum from './SidebarColum.vue';
+import { Dictionary } from '../interfaces';
 
-@Component
+@Component({
+  components: {
+    SidebarColum
+  }
+})
 export default class Sidebar extends Vue {
-  private linkTo(to: string): void {
-    if (this.$router.currentRoute.path.replace(/\//g, '') !== to.replace(/\//g, '')) {
-      this.$router.push(to);
-    }
+  private categories: Array<string> = this.$store.getters.categories;
+  private tags: Array<string> = this.$store.getters.tags;
+
+  private toggle(): void {
+    (this.$refs.closeNav as HTMLElement).click();
   }
 }
 </script>

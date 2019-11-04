@@ -2,7 +2,7 @@
   <section class="default_layout">
     <Sidebar/>
     <Contents>
-      <Header/>
+      <Header :type="type"/>
       <slot/>
     </Contents>
   </section>
@@ -21,5 +21,10 @@ import Contents from '../components/Contents.vue';
     Contents
   }
 })
-export default class DefaultLayout extends Vue { }
+export default class DefaultLayout extends Vue {
+  @Prop()
+  private name: string;
+  @Prop()
+  private type: string;
+}
 </script>

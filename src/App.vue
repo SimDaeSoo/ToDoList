@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
     <!-- <modals-container /> -->
   </div>
 </template>
@@ -9,5 +9,6 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class App extends Vue {}
+export default class App extends Vue {
+}
 </script>

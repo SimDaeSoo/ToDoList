@@ -6,6 +6,11 @@
     z-index: 3;
     color: #e4e4e4;
     position: fixed;
+    overflow-y: visible;
+}
+
+.sidebar li.category {
+    background: cadetblue;
 }
 
 .sidebar ul {
@@ -16,32 +21,39 @@
     background-color: #444845;
 }
 
+.sidebar li {
+    display: flex;
+}
+
+.sidebar li.selected {
+    background: #DB5A48;
+}
+
 .sidebar li a {
     display: block;
     padding: 11px 20px 9px 20px;
-    border-right: 1px solid #343847;
     text-decoration: none;
     font-size: 0.8em;
-    width: 100%;
 }
 
-.sidebar li a:hover,
-.sidebar .menu-btn:hover {
-    background-color: #343847;
+.sidebar li.category a {
+    font-size: 1em;
 }
 
 .sidebar .logo {
     display: block;
     float: left;
     font-size: 1.2em;
-    padding: 9px 10px 7px 11px;
+    padding: 9px 0px 7px 12px;
     text-decoration: none;
+    text-align: center;
 }
 
 .sidebar .menu {
     clear: both;
     max-height: 0;
     transition: max-height .2s ease-out;
+    overflow-y: scroll;
 }
 
 .sidebar .menu-icon {
@@ -108,7 +120,7 @@
 
 @media (min-width: 48em) {
     .sidebar {
-        width: 16em;
+        width: 14em;
         height: 100%;
         position: relative;
     }
@@ -125,7 +137,13 @@
     .sidebar .menu {
         clear: none;
         float: left;
-        max-height: none;
+        max-height: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .sidebar .menu-btn:checked~.menu {
+        max-height: 100%;
     }
 
     .sidebar .menu-icon {
