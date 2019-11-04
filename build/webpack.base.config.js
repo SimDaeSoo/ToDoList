@@ -1,7 +1,7 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const webpackConfig = {
@@ -47,22 +47,19 @@ const webpackConfig = {
             template: './src/index.html',
         }),
         new VueLoaderPlugin(),
-        new webpack.ProvidePlugin({
-            PIXI: ['pixi.js']
-        }),
-        new CopyWebpackPlugin([
-            {
-                from: path.resolve(__dirname, '../src/assets'),
-                to: 'src/assets'
-            }
-        ])
+        // new CopyWebpackPlugin([
+        //     {
+        //         from: path.resolve(__dirname, '../src/assets'),
+        //         to: 'src/assets'
+        //     }
+        // ])
     ],
     resolve: {
         extensions: ['.ts', '.js', '.json'],
-        alias: {
-            assets: path.resolve('src/assets/'),
-            json: path.resolve('src/json/')
-        }
+        // alias: {
+        //     assets: path.resolve('src/assets/'),
+        //     json: path.resolve('src/json/')
+        // }
     }
 };
 

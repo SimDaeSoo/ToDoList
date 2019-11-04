@@ -25,6 +25,9 @@ Detail한 요구사항은 [HOMEWORK.md](https://github.com/SimDaeSoo/Kakao_Mobil
 Dependency install
 ```sh
 $ npm install
+
+<!-- if node sass error -->
+$ sudo npm install --unsafe-perm
 ```  
 
 Run as develop mode

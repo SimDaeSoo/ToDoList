@@ -1,19 +1,22 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import LocalStorage from "../classes/LocalStorage";
-import { IArticle, ITag } from "../interfaces";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import LocalStorage from '../classes/LocalStorage';
+import { IArticle, ITag } from '../interfaces';
 
 Vue.use(Vuex);
 
-export const store: Vuex.Store = new Vuex.Store({
+export const store = new Vuex.Store({
     state: {
         articles: [],
         autoSave: false
     },
     getters: {
-        articles: (state): Array<IArticle> => { return state.articles; },
-        tags: (state): Array<ITag> => { return state.tags; },
-        autoSave: (state): boolean => { return state.autoSave; },
+        articles: (state): Array<IArticle> => {
+            return state.articles;
+        },
+        autoSave: (state): boolean => {
+            return state.autoSave;
+        },
     },
     mutations: {
         loadArticles: (state): void => {
@@ -52,7 +55,7 @@ export const store: Vuex.Store = new Vuex.Store({
     },
     actions: {
         load({ commit }): void { commit('loadArticles'); commit('loadTags'); },
-        save({ commit, state }): void { commit('save'); },
+        save({ commit }): void { commit('save'); },
         addArticle({ commit }, article: IArticle): void { commit('addArticle', article); },
         deleteArticle({ commit }, articleID: IArticle): void { commit('deleteArticle', articleID); },
         setAutoSave({ commit }, flag: boolean): void { commit('setAutoSave', flag); }

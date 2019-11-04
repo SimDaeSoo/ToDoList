@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
-    <router-view />
-    <!-- <modals-container /> -->
+  <div class="contents">
+    <slot/>
   </div>
 </template>
 
@@ -9,5 +8,5 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class App extends Vue {}
+export default class Contents extends Vue { }
 </script>

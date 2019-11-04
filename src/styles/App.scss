@@ -1,0 +1,29 @@
+@import './Sidebar.scss';
+
+body {
+    font-family: Arial, sans-serif;
+    background: #dce1df;
+    color: #4f585e;
+    margin: 0;
+}
+
+.default_layout {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.contents {
+    padding-top: 40px;
+    width: 100%;
+}
+
+@media (min-width: 48em) {
+    .default_layout {
+        display: flex;
+    }
+
+    .contents {
+        padding-top: 0px;
+    }
+}

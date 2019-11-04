@@ -1,3 +1,5 @@
+import { IArticle } from '../interfaces';
+
 class LocalStorage {
     private static _instance: LocalStorage;
 
@@ -10,6 +12,10 @@ class LocalStorage {
 
     public load(): { articles: Array<IArticle>, autoSave: boolean } {
         console.error('not maked load');
+        return {
+            articles: [],
+            autoSave: false
+        };
     }
 
     public save(data: { articles: Array<IArticle>, autoSave: boolean }): void {
@@ -17,4 +23,4 @@ class LocalStorage {
     }
 }
 
-export default LocalStorage.instance;
+export default LocalStorage;
