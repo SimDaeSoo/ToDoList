@@ -12,7 +12,8 @@ HTML 템플릿은 자유, 수퍼 셋 언어 SASS/SCSS, TypeScript 활용
 Detail한 요구사항은 [HOMEWORK.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/HOMEWORK.md)참조  
 
 ## 문제를 풀어나가는 과정 (History of Problem Solve)
-[SOLUTION.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/SOLUTION.md)참조  
+[SOLUTION.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/SOLUTION.md) 참조  
+[작업 히스토리](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/commits/master) 참조  
 
 ## 개발 환경 (Environments)
 - Vue.js
@@ -26,7 +27,7 @@ Dependency install
 ```sh
 $ npm install
 
-<!-- if node sass error -->
+<!-- node sass 설치 에러가 뜰때가 있다. if node sass error -->
 $ sudo npm install --unsafe-perm
 ```  
 
