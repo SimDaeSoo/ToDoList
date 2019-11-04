@@ -11,15 +11,15 @@
       </li>
       <SidebarColum
         v-for="(item,index) in categories"
-        :key="index"
-        :name="'category'"
+        :key="'categories'+index"
+        :name="'categories'"
         :type="item"
       />
 
       <li class="category">
         <a># Tags</a>
       </li>
-      <SidebarColum v-for="(item,index) in tags" :key="index" :name="'tags'" :type="item"/>
+      <SidebarColum v-for="(item,index) in tags" :key="'tags'+index" :name="'tags'" :type="item"/>
     </ul>
   </div>
 </template>
