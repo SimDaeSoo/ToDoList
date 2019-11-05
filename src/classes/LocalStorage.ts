@@ -21,11 +21,17 @@ class LocalStorage {
 
     public load(): any {
         const loadData: IStorageData = JSON.parse(localStorage.getItem('data'));
+        // 복호화 과정을 거쳐서 리턴하자.
         return loadData;
     }
 
     public save(data: IStorageData): void {
+        // 암호화 과정을 거쳐서 저장하자.
         localStorage.setItem('data', JSON.stringify(data));
+    }
+
+    public clear(): void {
+        localStorage.clear();
     }
 }
 

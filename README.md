@@ -1,4 +1,6 @@
 # 카카오모빌리티 신규 웹 서비스 Front-end 개발 Homework  
+[Example Page](http://15.164.141.35)
+> 개인적으로 사용하고 있는 서버라 추후 다른 페이지로 변경되어 있을 수 있음.
 
 ## 기한 (Term)
 2019.11.01(금) ~ 2019.11.08(금) [1 주일]  
@@ -23,20 +25,20 @@ Detail한 요구사항은 [HOMEWORK.md](https://github.com/SimDaeSoo/Kakao_Mobil
 - Babel
 
 ## 실행법 (How To Run?)
-Dependency install
+1. 의존성 모듈 설치 (Dependency install)
 ```sh
 $ npm install
 
-<!-- node sass 설치 에러가 뜰때가 있다. if node sass error -->
+// node sass 설치 에러 뜰때가 있다. (If node sass error)
 $ sudo npm install --unsafe-perm
 ```  
 
-Run as develop mode
+2. 개발자 모드로 실행 (Run as develop mode with webpack-dev-server)
 ```sh
 $ npm start
 ```  
 
-Build as production mode
+3. 프로덕트로 빌드 (Build as production mode)
 ```sh
 $ npm run build
 ```

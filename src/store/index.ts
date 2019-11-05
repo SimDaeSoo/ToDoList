@@ -44,15 +44,16 @@ export const store = new Vuex.Store({
 
             if (index >= 0) {
                 state.articles.splice(index, 1);
-            } else {
-                console.error('찾는 Article이 없다.');
             }
+        },
+        editArticle: (state, article: IArticle): void => {
         }
     },
     actions: {
         load({ commit }): void { commit('load'); },
         save({ commit }): void { commit('save'); },
         addArticle({ commit }, article: IArticle): void { commit('addArticle', article); commit('save'); },
+        editArticle({ commit }, article: IArticle): void { commit('editArticle', article); commit('save'); },
         deleteArticle({ commit }, articleID: IArticle): void { commit('deleteArticle', articleID); commit('save'); }
     }
 });
