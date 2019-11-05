@@ -25,8 +25,11 @@
     display: flex;
 }
 
-.sidebar li.selected {
-    background: #DB5A48;
+.sidebar li.active {
+    background-color: #DB5A48;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
 }
 
 .sidebar li a {

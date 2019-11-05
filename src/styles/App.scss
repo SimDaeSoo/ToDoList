@@ -9,7 +9,8 @@ body {
     margin: 0;
 }
 
-.default_layout {
+.default_layout,
+.not_found_layout {
     width: 100%;
     height: 100%;
     display: block;
@@ -29,7 +30,9 @@ body {
 }
 
 @media (min-width: 48em) {
-    .default_layout {
+
+    .default_layout,
+    .not_found_layout {
         display: flex;
         overflow-y: hidden;
     }

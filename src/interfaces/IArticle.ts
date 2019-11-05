@@ -5,10 +5,5 @@ export interface IArticle {
     end: number;
     isImportant: boolean;
     isDone: boolean;
-    tags: Array<ITag>;
-}
-
-export interface ITag {
-    articleID: number;
-    tagString: string;
+    tags: Array<string>;
 }

@@ -1,23 +1,19 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import LocalStorage from '../classes/LocalStorage';
-import { IArticle, ITag } from '../interfaces';
+import { IArticle, IStorageData } from '../interfaces';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
         defaultCategories: ['All', 'Upcoming', 'Important', 'Done'],
-        defaultTags: ['All'],
-        articles: [],
-        autoSave: false
+        defaultTags: [],
+        articles: []
     },
     getters: {
         articles: (state): Array<IArticle> => {
             return state.articles;
-        },
-        autoSave: (state): boolean => {
-            return state.autoSave;
         },
         categories: (state): Array<string> => {
             return state.defaultCategories;
@@ -27,17 +23,12 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
-        loadArticles: (state): void => {
-            const loadData: {
-                articles: Array<IArticle>,
-                autoSave: boolean
-            } = LocalStorage.instance.load();
-
+        load: (state): void => {
+            const loadData: IStorageData = LocalStorage.load();
             state.articles = loadData.articles;
-            state.autoSave = loadData.autoSave;
         },
         save: (state): void => {
-            LocalStorage.instance.save({ articles: state.articles, autoSave: state.autoSave });
+            LocalStorage.save({ articles: state.articles });
         },
         addArticle: (state, article: IArticle): void => {
             state.articles.push(article);
@@ -56,16 +47,12 @@ export const store = new Vuex.Store({
             } else {
                 console.error('찾는 Article이 없다.');
             }
-        },
-        setAutoSave: (state, flag: boolean): void => {
-            state.autoSave = flag;
         }
     },
     actions: {
-        load({ commit }): void { commit('loadArticles'); commit('loadTags'); },
+        load({ commit }): void { commit('load'); },
         save({ commit }): void { commit('save'); },
-        addArticle({ commit }, article: IArticle): void { commit('addArticle', article); },
-        deleteArticle({ commit }, articleID: IArticle): void { commit('deleteArticle', articleID); },
-        setAutoSave({ commit }, flag: boolean): void { commit('setAutoSave', flag); }
+        addArticle({ commit }, article: IArticle): void { commit('addArticle', article); commit('save'); },
+        deleteArticle({ commit }, articleID: IArticle): void { commit('deleteArticle', articleID); commit('save'); }
     }
 });

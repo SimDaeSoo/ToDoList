@@ -1,8 +1,9 @@
-import { IArticle, ITag } from './IArticle';
+import { IArticle } from './IArticle';
 import { Dictionary } from './Default';
+import { IStorageData } from './IStorageData';
 
 export {
     IArticle,
-    ITag,
-    Dictionary
+    Dictionary,
+    IStorageData
 }
