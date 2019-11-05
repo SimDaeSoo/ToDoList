@@ -1,7 +1,7 @@
 <template>
   <div class="tag">
-    #Front
-    <button class="tag_button">X</button>
+    #{{tag}}
+    <button class="tag_button" :disabled="disabled" @click="callback(tag)">X</button>
   </div>
 </template>
 
@@ -10,5 +10,11 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Tag extends Vue {
+  @Prop()
+  private tag: string;
+  @Prop()
+  private disabled: boolean;
+  @Prop()
+  private callback: Function;
 }
 </script>

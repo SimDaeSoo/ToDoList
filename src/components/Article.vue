@@ -1,42 +1,67 @@
 <template>
   <div class="article">
     <!-- is Done? check box -->
-    <div
-      :class="{'done_check_box': true, 'active':isDone }"
-      @click="toggleIsDone"
-      v-if="!isWrite"
-    >done?</div>
+    <div :class="{'done_check_box': true, 'active':article.isDone }" @click="toggleIsDone">done?</div>
 
     <!-- Date Box -->
     <div class="date_box">
-      <Datepicker class="datepicker" :value="begin" :format="'yyyy-MM-dd'" :disabled="!edit"/>~
-      <Datepicker class="datepicker" :value="end" :format="'yyyy-MM-dd'" :disabled="!edit"/>
+      <Datepicker
+        class="datepicker"
+        v-model="begin"
+        :name="article.articleID+'end'"
+        :format="'yyyy-MM-dd'"
+        :disabled="!isEditable"
+      />~
+      <Datepicker
+        class="datepicker"
+        v-model="end"
+        :name="article.articleID+'end'"
+        :format="'yyyy-MM-dd'"
+        :disabled="!isEditable"
+      />
     </div>
 
     <!-- Contents -->
     <div class="article_detail">
       <!-- TODO Detail -->
       <div class="article_contents">
-        <textarea placeholder="Insert your To Do List." :disabled="!edit"/>
+        <textarea
+          placeholder="Insert your To Do List."
+          v-model="article.contents"
+          :disabled="!isEditable"
+        />
       </div>
 
       <!-- Tag Box -->
       <div class="article_tags">
         <!-- tags -->
-        <Tag/>
+        <Tag
+          v-for="(tag, index) in article.tags"
+          :key="article.articleID+'tag'+index"
+          :tag="tag"
+          :disabled="!isEditable"
+          :callback="removeTag"
+        />
+
         <!-- tag input -->
-        <input placeholder="Insert tags ex) #Front #Back" :disabled="!edit">
+        <input
+          v-if="isEditable"
+          v-auto-tag-parser
+          placeholder="Insert tags ex) #Front #Back"
+          v-model="tagString"
+          :callback="removeTag"
+        >
       </div>
     </div>
 
     <!-- important button -->
     <div class="star_button" @click="toggleIsImportant">
-      <Star :class="{'star': true, 'active':isImportant }"/>
+      <Star :class="{'star': true, 'active':article.isImportant }"/>
     </div>
 
     <!-- set button -->
-    <div :class="{'set_button':true, 'is_done':isDone}">
-      <button @click="toggleEdit">{{buttonText}}</button>
+    <div :class="{'set_button':true, 'is_done':article.isDone, 'is_editable':isEditable}">
+      <button @click="toggle">{{state}}</button>
     </div>
   </div>
 </template>
@@ -48,6 +73,12 @@ import Tag from './Tag.vue';
 import Star from './Star.vue';
 import { IArticle } from '../interfaces';
 
+const enum BUTTON_TYPE {
+  EDIT = 'Edit',
+  SAVE = 'Done',
+  DELETE = 'Del'
+};
+
 @Component({
   components: {
     Datepicker,
@@ -56,48 +87,83 @@ import { IArticle } from '../interfaces';
   }
 })
 export default class Article extends Vue {
-  @Prop()
-  private type: string;
+  private state: BUTTON_TYPE = BUTTON_TYPE.EDIT;
+  private tagString: string = '';
+
   @Prop()
   private article: IArticle;
 
-  private begin: Date = new Date();
-  private end: Date = new Date();
-
-  private edit: boolean = this.isWrite;
-  private isDone: boolean = false;
-  private isImportant: boolean = false;
-
-  private get isVaildDate(): boolean {
-    return this.begin.getTime() <= this.end.getTime();
+  created() {
+    if (this.article.isDone) {
+      this.state = BUTTON_TYPE.DELETE;
+    }
   }
 
-  private toggleEdit(): void {
-    this.edit = !this.edit;
+  private get isVaildDate(): boolean {
+    return this.article.begin <= this.article.end;
+  }
+
+  private toggle(): void {
+    if (this.state === BUTTON_TYPE.DELETE) {
+      this.$store.dispatch('deleteArticle', this.article.articleID);
+    } else if (this.state === BUTTON_TYPE.EDIT) {
+      this.state = BUTTON_TYPE.SAVE;
+    } else if (this.state === BUTTON_TYPE.SAVE) {
+      this.state = BUTTON_TYPE.EDIT;
+    }
+  }
+
+  private get isEditable(): boolean {
+    return this.state === BUTTON_TYPE.SAVE;
   }
 
   private toggleIsDone(): void {
-    this.isDone = !this.isDone;
+    this.article.isDone = !this.article.isDone;
+    if (this.state === BUTTON_TYPE.DELETE) {
+      this.state = BUTTON_TYPE.EDIT;
+    } else {
+      this.state = BUTTON_TYPE.DELETE;
+    }
+    this.$store.dispatch('save');
   }
 
   private toggleIsImportant(): void {
-    this.isImportant = !this.isImportant;
+    this.article.isImportant = !this.article.isImportant;
+    this.$store.dispatch('save');
   }
 
-  private get isWrite(): boolean {
-    return this.type === 'write';
+  private parseTag(): void {
+    const matchedArray: Array<string> = this.tagString.match(/#.* /g);
+    if (!matchedArray) return;
+
+    const matchedString: string = matchedArray[0].trim().replace('#', '');
+    this.tagString = '';
+
+    this.article.tags.push(matchedString);
   }
 
-  private get buttonText(): string {
-    let buttonText: string = '';
-    if (this.isWrite) {
-      buttonText = 'Add';
-    } else if (this.isDone) {
-      buttonText = 'Del';
-    } else {
-      buttonText = 'Edit';
+  private removeTag(tag: string): void {
+    const index = this.article.tags.indexOf(tag);
+    if (index >= 0) {
+      this.article.tags.splice(index, 1);
     }
-    return buttonText;
+    this.$store.dispatch('save');
+  }
+
+  private get begin(): Date {
+    return new Date(this.article.begin);
+  }
+
+  private get end(): Date {
+    return new Date(this.article.end);
+  }
+
+  private set begin(date: Date) {
+    this.article.begin = date.getTime();
+  }
+
+  private set end(date: Date) {
+    this.article.end = date.getTime();
   }
 }
 </script>

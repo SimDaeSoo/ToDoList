@@ -12,7 +12,7 @@ class LocalStorage {
 
     private initialize(): void {
         if (!localStorage.data) {
-            const defaultData: IStorageData = { articles: [] }
+            const defaultData: IStorageData = { articles: [], articleID: 0 }
             this.save(defaultData);
         }
 

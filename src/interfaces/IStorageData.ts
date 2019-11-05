@@ -1,4 +1,5 @@
 import { IArticle } from './IArticle';
 export interface IStorageData {
-    articles: Array<IArticle>
+    articles: Array<IArticle>,
+    articleID: number
 }
