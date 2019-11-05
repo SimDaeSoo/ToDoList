@@ -1,32 +1,42 @@
 <template>
   <div class="article">
-    <div :class="{'done_check_box': true, 'active':isDone }" @click="toggleIsDone()">done?</div>
+    <!-- is Done? check box -->
+    <div
+      :class="{'done_check_box': true, 'active':isDone }"
+      @click="toggleIsDone"
+      v-if="!isWrite"
+    >done?</div>
 
+    <!-- Date Box -->
     <div class="date_box">
-      <Datepicker class="datepicker" :value="begin" :format="'yyyy-MM-dd'" :disabled="edit"/>~
-      <Datepicker class="datepicker" :value="end" :format="'yyyy-MM-dd'" :disabled="edit"/>
+      <Datepicker class="datepicker" :value="begin" :format="'yyyy-MM-dd'" :disabled="!edit"/>~
+      <Datepicker class="datepicker" :value="end" :format="'yyyy-MM-dd'" :disabled="!edit"/>
     </div>
 
     <!-- Contents -->
     <div class="article_detail">
       <!-- TODO Detail -->
       <div class="article_contents">
-        <textarea placeholder="Insert your To Do List." :disabled="edit"/>
+        <textarea placeholder="Insert your To Do List." :disabled="!edit"/>
       </div>
 
       <!-- Tag Box -->
       <div class="article_tags">
+        <!-- tags -->
         <Tag/>
-        <input placeholder="Insert your tag. ex) #Front #Back" :disabled="edit">
+        <!-- tag input -->
+        <input placeholder="Insert tags ex) #Front #Back" :disabled="!edit">
       </div>
     </div>
 
-    <div class="star_button" @click="toggleIsImportant()">
+    <!-- important button -->
+    <div class="star_button" @click="toggleIsImportant">
       <Star :class="{'star': true, 'active':isImportant }"/>
     </div>
 
-    <div class="set_button">
-      <button @click="changeArticle">{{isDone?'Del':'Edit'}}</button>
+    <!-- set button -->
+    <div :class="{'set_button':true, 'is_done':isDone}">
+      <button @click="toggleEdit">{{buttonText}}</button>
     </div>
   </div>
 </template>
@@ -36,6 +46,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import Datepicker from 'vuejs-datepicker';
 import Tag from './Tag.vue';
 import Star from './Star.vue';
+import { IArticle } from '../interfaces';
 
 @Component({
   components: {
@@ -45,10 +56,15 @@ import Star from './Star.vue';
   }
 })
 export default class Article extends Vue {
+  @Prop()
+  private type: string;
+  @Prop()
+  private article: IArticle;
+
   private begin: Date = new Date();
   private end: Date = new Date();
 
-  private edit: boolean = true;
+  private edit: boolean = this.isWrite;
   private isDone: boolean = false;
   private isImportant: boolean = false;
 
@@ -56,7 +72,7 @@ export default class Article extends Vue {
     return this.begin.getTime() <= this.end.getTime();
   }
 
-  private changeArticle(): void {
+  private toggleEdit(): void {
     this.edit = !this.edit;
   }
 
@@ -66,6 +82,22 @@ export default class Article extends Vue {
 
   private toggleIsImportant(): void {
     this.isImportant = !this.isImportant;
+  }
+
+  private get isWrite(): boolean {
+    return this.type === 'write';
+  }
+
+  private get buttonText(): string {
+    let buttonText: string = '';
+    if (this.isWrite) {
+      buttonText = 'Add';
+    } else if (this.isDone) {
+      buttonText = 'Del';
+    } else {
+      buttonText = 'Edit';
+    }
+    return buttonText;
   }
 }
 </script>

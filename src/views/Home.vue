@@ -1,36 +1,29 @@
 <template>
   <DefaultLayout :name="name" :type="type">
-    <div>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
-      <Article/>
+    <div class="article_header">Write Article</div>
+    <div class="articles">
+      <Article :type="'write'"/>
+    </div>
+
+    <div class="article_header">Articles</div>
+
+    <div class="articles">
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
+      <Article :type="'read'"/>
     </div>
   </DefaultLayout>
 </template>

@@ -29,21 +29,16 @@ body {
     margin-bottom: 0px;
 }
 
-.full {
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-}
-
 @media (min-width: 48em) {
 
     .default_layout,
     .not_found_layout {
         display: flex;
-        overflow-y: hidden;
+        overflow-y: scroll;
     }
 
     .contents {
+        padding-left: 224px;
         padding-top: 0px;
         height: auto;
         margin-top: 20px;

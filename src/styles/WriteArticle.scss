@@ -1,3 +1,7 @@
+.articles {
+    margin-bottom: 20px;
+}
+
 .datepicker input {
     width: 85px;
     text-align: center;
@@ -22,6 +26,12 @@
     display: flex;
     position: relative;
     margin: 5;
+}
+
+.article_header {
+    text-align: left;
+    font-size: 2em;
+    padding-left: 5px;
 }
 
 .article .article_detail {
@@ -69,7 +79,7 @@
     border-radius: 5px;
     margin: 4px;
     height: 85;
-    background-color: crimson;
+    background-color: antiquewhite;
     display: none;
 }
 
@@ -80,6 +90,17 @@
     color: white;
     font-weight: 800;
     font-size: 0.8em;
+    text-align: center;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
+.article .set_button.is_done button {
+    background-color: coral;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
 }
 
 .tag {
@@ -119,11 +140,11 @@
 .done_check_box {
     width: 70px;
     height: auto;
-    background-position-x: 12px;
+    background-position-x: 13px;
     background-position-y: 20px;
     background-repeat: no-repeat;
     background-image: url(~assets/box.svg);
-    margin-left: 10px;
+    margin-left: 6px;
     font-size: 0.8em;
     padding-top: 68px;
     text-align: center;
@@ -132,7 +153,7 @@
 .done_check_box.active {
     width: 70px;
     height: auto;
-    background-position-x: 12px;
+    background-position-x: 13px;
     background-position-y: 20px;
     background-repeat: no-repeat;
     background-image: url(~assets/done.svg);
