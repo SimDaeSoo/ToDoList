@@ -1,11 +1,8 @@
 <template>
   <div class="article">
-    <!-- is Important? -->
-    <input type="checkbox">
-    <!-- is Done? -->
-    <input type="checkbox">
-    <!-- Date Picker -->
-    <div>
+    <div :class="{'done_check_box': true, 'active':isDone }" @click="toggleIsDone()">done?</div>
+
+    <div class="date_box">
       <Datepicker class="datepicker" :value="begin" :format="'yyyy-MM-dd'" :disabled="edit"/>~
       <Datepicker class="datepicker" :value="end" :format="'yyyy-MM-dd'" :disabled="edit"/>
     </div>
@@ -24,7 +21,13 @@
       </div>
     </div>
 
-    <button class="set_button" @click="changeArticle">{{isDone?'Delete':'Edit'}}</button>
+    <div class="star_button" @click="toggleIsImportant()">
+      <Star :class="{'star': true, 'active':isImportant }"/>
+    </div>
+
+    <div class="set_button">
+      <button @click="changeArticle">{{isDone?'Del':'Edit'}}</button>
+    </div>
   </div>
 </template>
 
@@ -32,17 +35,22 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Datepicker from 'vuejs-datepicker';
 import Tag from './Tag.vue';
+import Star from './Star.vue';
 
 @Component({
   components: {
     Datepicker,
-    Tag
+    Tag,
+    Star
   }
 })
 export default class Article extends Vue {
   private begin: Date = new Date();
   private end: Date = new Date();
+
   private edit: boolean = true;
+  private isDone: boolean = false;
+  private isImportant: boolean = false;
 
   private get isVaildDate(): boolean {
     return this.begin.getTime() <= this.end.getTime();
@@ -50,6 +58,14 @@ export default class Article extends Vue {
 
   private changeArticle(): void {
     this.edit = !this.edit;
+  }
+
+  private toggleIsDone(): void {
+    this.isDone = !this.isDone;
+  }
+
+  private toggleIsImportant(): void {
+    this.isImportant = !this.isImportant;
   }
 }
 </script>

@@ -8,6 +8,11 @@
     font-size: 0.8em;
 }
 
+.date_box {
+    text-align: center;
+    display: none;
+}
+
 .article {
     border-radius: 5px;
     border-style: groove;
@@ -15,8 +20,8 @@
     border-width: thin;
     background: whitesmoke;
     display: flex;
-    margin-bottom: 10px;
     position: relative;
+    margin: 5;
 }
 
 .article .article_detail {
@@ -26,7 +31,7 @@
 
 .article .article_detail textarea {
     width: 100%;
-    height: 60;
+    height: 60px;
     border: 1px solid #CCC;
     border-radius: 5px;
     font-size: 1em;
@@ -41,24 +46,37 @@
     font-size: 1em;
 }
 
-.article .article_contents {
-    display: flex;
-    width: 100%;
-    height: auto;
-}
-
 .article .article_tags {
     display: flex;
     width: 100%;
+    // max-width: 240px;
     height: 20px;
 }
 
 .article .set_button {
-    width: 50px;
+    width: 40px;
+    min-width: 40px;
     border: 1px solid #CCC;
     border-radius: 5px;
     margin: 4px;
+    height: 85;
+}
+
+.article .star_button {
+    width: 40px;
+    min-width: 40px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    margin: 4px;
+    height: 85;
+    background-color: crimson;
+    display: none;
+}
+
+.article .set_button button {
     background-color: deepskyblue;
+    width: 100%;
+    height: 100%;
     color: white;
     font-weight: 800;
     font-size: 0.8em;
@@ -96,4 +114,62 @@
 
 .article :disabled {
     background: transparent;
+}
+
+.done_check_box {
+    width: 70px;
+    height: auto;
+    background-position-x: 12px;
+    background-position-y: 20px;
+    background-repeat: no-repeat;
+    background-image: url(~assets/box.svg);
+    margin-left: 10px;
+    font-size: 0.8em;
+    padding-top: 68px;
+    text-align: center;
+}
+
+.done_check_box.active {
+    width: 70px;
+    height: auto;
+    background-position-x: 12px;
+    background-position-y: 20px;
+    background-repeat: no-repeat;
+    background-image: url(~assets/done.svg);
+}
+
+
+@media (min-width: 48em) {
+    .article .star_button {
+        display: block;
+    }
+
+    .article .date_box {
+        display: block;
+    }
+}
+
+.star {
+    fill: #CDCDCD;
+    transition: fill 200ms;
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    margin-left: 3px;
+    margin-top: 24px;
+}
+
+.star.active {
+    fill: #FFA600;
+    animation: fav 600ms ease;
+}
+
+@keyframes fav {
+    70% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

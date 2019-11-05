@@ -1,7 +1,6 @@
-// const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const webpackConfig = {
@@ -33,6 +32,8 @@ const webpackConfig = {
                 options: {
                     name: '[path][name].[ext]',
                 },
+                include: path.resolve('src'),
+                exclude: /node_modules/,
             }, {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'file-loader',
@@ -47,19 +48,19 @@ const webpackConfig = {
             template: './src/index.html',
         }),
         new VueLoaderPlugin(),
-        // new CopyWebpackPlugin([
-        //     {
-        //         from: path.resolve(__dirname, '../src/assets'),
-        //         to: 'src/assets'
-        //     }
-        // ])
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../src/assets'),
+                to: 'src/assets',
+                ignore: ['.*']
+            }
+        ])
     ],
     resolve: {
-        extensions: ['.ts', '.js', '.json'],
-        // alias: {
-        //     assets: path.resolve('src/assets/'),
-        //     json: path.resolve('src/json/')
-        // }
+        extensions: ['.ts', '.js', '.json', 'scss'],
+        alias: {
+            assets: path.resolve('src/assets/')
+        }
     }
 };
 
