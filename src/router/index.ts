@@ -12,6 +12,8 @@ export const router: Router = new Router({
         { path: "/category/:type", component: Home, props: (route) => ({ name: 'category', type: route.params.type }) },
         { path: "/tags", component: Home, props: (route) => ({ name: 'category', type: 'all' }) },
         { path: "/tags/:type", component: Home, props: (route) => ({ name: 'tags', type: route.params.type }) },
+        { path: "/search", component: Home, props: (route) => ({ name: 'category', type: 'all' }) },
+        { path: "/search/:type", component: Home, props: (route) => ({ name: 'search', type: route.params.type }) },
         { path: "*", component: NotFound }
     ]
 });

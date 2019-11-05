@@ -37,6 +37,12 @@ export function getFilteredArticles(articles: Array<IArticle>, option: any): Arr
             if (flag) {
                 result.push(article);
             }
+        } else if (option.name === 'search') {
+            const articleToString: string = article.contents + article.tags.toString();
+
+            if (articleToString.toLowerCase().indexOf(option.type) >= 0) {
+                result.push(article);
+            }
         }
     });
 

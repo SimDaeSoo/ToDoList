@@ -13,6 +13,15 @@
     background: cadetblue;
 }
 
+.sidebar .search {
+    height: 24px;
+}
+
+.sidebar .search input {
+    margin: 2px;
+    width: 100%;
+}
+
 .sidebar ul {
     margin: 0;
     padding: 0;
@@ -114,7 +123,7 @@
 }
 
 .sidebar .menu-btn:checked~.menu {
-    max-height: 342px;
+    max-height: 332px;
 }
 
 .sidebar .menu-btn:checked~.menu-icon .navicon {
@@ -154,7 +163,6 @@
         clear: none;
         float: left;
         max-height: 100%;
-        height: 100%;
         overflow-y: auto;
     }
 

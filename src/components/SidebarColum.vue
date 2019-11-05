@@ -16,6 +16,8 @@ export default class SidebarColum extends Vue {
   private type: string;
   @Prop()
   private name: string;
+  @Prop()
+  private callback: Function;
   private path: string = '';
   @Watch('$route')
   private updateRoutePath(): void {
@@ -30,6 +32,7 @@ export default class SidebarColum extends Vue {
     if (!isSameRoute(this.$router.currentRoute.path, to)) {
       this.$router.push(to.toLowerCase());
     }
+    this.callback();
   }
 
   private get isActive(): boolean {
