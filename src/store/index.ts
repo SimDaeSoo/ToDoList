@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         defaultCategories: ['All', 'Upcoming', 'Important', 'Done'],
-        defaultTags: [],
+        tags: [],
         articles: [],
         articleID: 0
     },
@@ -20,7 +20,7 @@ export const store = new Vuex.Store({
             return state.defaultCategories;
         },
         tags: (state): Array<string> => {
-            return state.defaultTags.concat([]);
+            return state.tags;
         },
         articleID: (state): number => {
             return state.articleID;
@@ -31,9 +31,27 @@ export const store = new Vuex.Store({
             const loadData: IStorageData = LocalStorage.load();
             state.articles = loadData.articles;
             state.articleID = loadData.articleID;
+
+            state.tags.splice(0, state.tags.length);
+            state.articles.forEach((article: IArticle): void => {
+                article.tags.forEach((tag: string): void => {
+                    if (state.tags.indexOf(tag) < 0) {
+                        state.tags.push(tag);
+                    }
+                });
+            });
         },
         save: (state): void => {
             LocalStorage.save({ articles: state.articles, articleID: state.articleID });
+
+            state.tags.splice(0, state.tags.length);
+            state.articles.forEach((article: IArticle): void => {
+                article.tags.forEach((tag: string): void => {
+                    if (state.tags.indexOf(tag) < 0) {
+                        state.tags.push(tag);
+                    }
+                });
+            });
         },
         addArticle: (state, article: IArticle): void => {
             state.articleID++;

@@ -77,6 +77,7 @@ export default class WriteArticle extends Vue {
       isDone: false,
       tags: []
     };
+    this.tagString = '';
 
     Vue.set(this, 'article', defaultArticle);
   }

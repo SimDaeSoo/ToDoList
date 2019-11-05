@@ -25,8 +25,18 @@ export function getFilteredArticles(articles: Array<IArticle>, option: any): Arr
                     if (article.end - Date.now() <= MILLISEC_FOR_DAY && article.end - Date.now() >= -MILLISEC_FOR_DAY) result.push(article);
                     break;
             }
-        } else if (option.type === 'tag') {
+        } else if (option.name === 'tags') {
+            let flag: boolean = false;
 
+            article.tags.forEach((tag: string): void => {
+                if (tag.toLowerCase() === option.type) {
+                    flag = true;
+                }
+            })
+
+            if (flag) {
+                result.push(article);
+            }
         }
     });
 
