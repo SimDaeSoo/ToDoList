@@ -50,13 +50,13 @@
           placeholder="Insert tags ex) #Front #Back"
           v-model="tagString"
           :callback="removeTag"
-        >
+        />
       </div>
     </div>
 
     <!-- important button -->
     <div class="star_button" @click="toggleIsImportant">
-      <Star :class="{'star': true, 'active':article.isImportant }"/>
+      <Star :class="{'star': true, 'active':article.isImportant }" />
     </div>
 
     <!-- set button -->
@@ -67,17 +67,17 @@
 </template>
 
 <script lang = "ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import Datepicker from 'vuejs-datepicker';
-import Tag from './Tag.vue';
-import Star from './Star.vue';
-import { IArticle } from '../interfaces';
+import { Vue, Component, Prop } from "vue-property-decorator";
+import Datepicker from "vuejs-datepicker";
+import Tag from "./Tag.vue";
+import Star from "./Star.vue";
+import { IArticle } from "../interfaces";
 
 const enum BUTTON_TYPE {
-  EDIT = 'Edit',
-  SAVE = 'Done',
-  DELETE = 'Del'
-};
+  EDIT = "Edit",
+  SAVE = "Save",
+  DELETE = "Del"
+}
 
 @Component({
   components: {
@@ -88,7 +88,7 @@ const enum BUTTON_TYPE {
 })
 export default class Article extends Vue {
   private state: BUTTON_TYPE = BUTTON_TYPE.EDIT;
-  private tagString: string = '';
+  private tagString: string = "";
 
   @Prop()
   private article: IArticle;
@@ -105,11 +105,13 @@ export default class Article extends Vue {
 
   private toggle(): void {
     if (this.state === BUTTON_TYPE.DELETE) {
-      this.$store.dispatch('deleteArticle', this.article.articleID);
+      this.$store.dispatch("deleteArticle", this.article.articleID);
+      this.save();
     } else if (this.state === BUTTON_TYPE.EDIT) {
       this.state = BUTTON_TYPE.SAVE;
     } else if (this.state === BUTTON_TYPE.SAVE) {
       this.state = BUTTON_TYPE.EDIT;
+      this.save();
     }
   }
 
@@ -124,22 +126,23 @@ export default class Article extends Vue {
     } else {
       this.state = BUTTON_TYPE.DELETE;
     }
-    this.$store.dispatch('save');
+    this.save();
   }
 
   private toggleIsImportant(): void {
     this.article.isImportant = !this.article.isImportant;
-    this.$store.dispatch('save');
+    this.save();
   }
 
   private parseTag(): void {
     const matchedArray: Array<string> = this.tagString.match(/#.* /g);
     if (!matchedArray) return;
 
-    const matchedString: string = matchedArray[0].trim().replace('#', '');
-    this.tagString = '';
+    const matchedString: string = matchedArray[0].trim().replace("#", "");
+    this.tagString = "";
 
     this.article.tags.push(matchedString);
+    this.save();
   }
 
   private removeTag(tag: string): void {
@@ -147,7 +150,21 @@ export default class Article extends Vue {
     if (index >= 0) {
       this.article.tags.splice(index, 1);
     }
-    this.$store.dispatch('save');
+    this.save();
+  }
+
+  private async save(): Promise<void> {
+    const saveResult: boolean = await this.$store.dispatch("save");
+
+    if (saveResult) {
+      Vue.toasted.show("Save is Success!", {
+        icon: "check"
+      } as any);
+    } else {
+      Vue.toasted.show("Save is Fail!", {
+        icon: "close"
+      } as any);
+    }
   }
 
   private get begin(): Date {

@@ -14,7 +14,23 @@ export const store = new Vuex.Store({
     },
     getters: {
         articles: (state): Array<IArticle> => {
-            return state.articles;
+            return state.articles.sort((articleA: IArticle, articleB: IArticle): number => {
+                if (articleA.isImportant && !articleB.isImportant) {
+                    return -1;
+                } else if (!articleA.isImportant && articleB.isImportant) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }).sort((articleA: IArticle, articleB: IArticle): number => {
+                if (articleA.isDone && !articleB.isDone) {
+                    return 1;
+                } else if (!articleA.isDone && articleB.isDone) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
         },
         categories: (state): Array<string> => {
             return state.defaultCategories;
@@ -69,14 +85,12 @@ export const store = new Vuex.Store({
             if (index >= 0) {
                 state.articles.splice(index, 1);
             }
-        },
-        editArticle: (state, article: IArticle): void => {
         }
     },
     actions: {
-        load({ commit }): void { commit('load'); },
-        save({ commit }): void { commit('save'); },
-        addArticle({ commit }, article: IArticle): void { commit('addArticle', article); commit('save'); },
-        deleteArticle({ commit }, articleID: IArticle): void { commit('deleteArticle', articleID); commit('save'); }
+        load({ commit }): boolean { commit('load'); return true; },
+        save({ commit }): boolean { commit('save'); return true; },
+        addArticle({ commit }, article: IArticle): void { commit('addArticle', article); },
+        deleteArticle({ commit }, articleID: IArticle): void { commit('deleteArticle', articleID); }
     }
 });

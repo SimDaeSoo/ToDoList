@@ -2,15 +2,15 @@
   <div class="article">
     <!-- Date Box -->
     <div class="date_box">
-      <Datepicker class="datepicker" v-model="begin" name="begin" :format="'yyyy-MM-dd'"/>~
-      <Datepicker class="datepicker" v-model="end" name="end" :format="'yyyy-MM-dd'"/>
+      <Datepicker class="datepicker" v-model="begin" name="begin" :format="'yyyy-MM-dd'" />~
+      <Datepicker class="datepicker" v-model="end" name="end" :format="'yyyy-MM-dd'" />
     </div>
 
     <!-- Contents -->
     <div class="article_detail">
       <!-- TODO Detail -->
       <div class="article_contents">
-        <textarea placeholder="Insert your To Do List." v-model="article.contents"/>
+        <textarea placeholder="Insert your To Do List." v-model="article.contents" />
       </div>
 
       <!-- Tag Box -->
@@ -25,13 +25,13 @@
         />
 
         <!-- tag input -->
-        <input v-auto-tag-parser placeholder="Insert tags ex) #Front #Back" v-model="tagString">
+        <input v-auto-tag-parser placeholder="Insert tags ex) #Front #Back" v-model="tagString" />
       </div>
     </div>
 
     <!-- important button -->
     <div class="star_button" @click="toggleIsImportant">
-      <Star :class="{'star': true, 'active':article.isImportant }"/>
+      <Star :class="{'star': true, 'active':article.isImportant }" />
     </div>
 
     <!-- set button -->
@@ -42,11 +42,11 @@
 </template>
 
 <script lang = "ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import Datepicker from 'vuejs-datepicker';
-import Tag from './Tag.vue';
-import Star from './Star.vue';
-import { IArticle } from '../interfaces';
+import { Vue, Component, Prop } from "vue-property-decorator";
+import Datepicker from "vuejs-datepicker";
+import Tag from "./Tag.vue";
+import Star from "./Star.vue";
+import { IArticle } from "../interfaces";
 
 @Component({
   components: {
@@ -56,10 +56,10 @@ import { IArticle } from '../interfaces';
   }
 })
 export default class WriteArticle extends Vue {
-  private tagString: string = '';
+  private tagString: string = "";
   private article: IArticle = {
     articleID: this.$store.getters.articleID,
-    contents: '',
+    contents: "",
     begin: Date.now(),
     end: Date.now(),
     isImportant: false,
@@ -70,16 +70,16 @@ export default class WriteArticle extends Vue {
   private initialize(): void {
     const defaultArticle: IArticle = {
       articleID: this.$store.getters.articleID,
-      contents: '',
+      contents: "",
       begin: Date.now(),
       end: Date.now(),
       isImportant: false,
       isDone: false,
       tags: []
     };
-    this.tagString = '';
+    this.tagString = "";
 
-    Vue.set(this, 'article', defaultArticle);
+    Vue.set(this, "article", defaultArticle);
   }
 
   private toggleIsImportant(): void {
@@ -91,7 +91,7 @@ export default class WriteArticle extends Vue {
   }
 
   private get buttonText(): string {
-    let buttonText: string = 'Add';
+    let buttonText: string = "Add";
     return buttonText;
   }
 
@@ -99,8 +99,8 @@ export default class WriteArticle extends Vue {
     const matchedArray: Array<string> = this.tagString.match(/#.* /g);
     if (!matchedArray) return;
 
-    const matchedString: string = matchedArray[0].trim().replace('#', '');
-    this.tagString = '';
+    const matchedString: string = matchedArray[0].trim().replace("#", "");
+    this.tagString = "";
 
     this.article.tags.push(matchedString);
   }
@@ -109,6 +109,20 @@ export default class WriteArticle extends Vue {
     const index = this.article.tags.indexOf(tag);
     if (index >= 0) {
       this.article.tags.splice(index, 1);
+    }
+  }
+
+  private async save(): Promise<void> {
+    const saveResult: boolean = await this.$store.dispatch("save");
+
+    if (saveResult) {
+      Vue.toasted.show("Save is Success!", {
+        icon: "check"
+      } as any);
+    } else {
+      Vue.toasted.show("Save is Fail!", {
+        icon: "close"
+      } as any);
     }
   }
 
@@ -130,7 +144,8 @@ export default class WriteArticle extends Vue {
 
   private addArticle(): void {
     const newArticle: IArticle = Object.assign({}, this.article) as IArticle;
-    this.$store.dispatch('addArticle', newArticle);
+    this.$store.dispatch("addArticle", newArticle);
+    this.save();
     this.initialize();
   }
 }
