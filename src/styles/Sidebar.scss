@@ -162,12 +162,12 @@
     .sidebar .menu {
         clear: none;
         float: left;
-        max-height: 100%;
+        max-height: calc(100% - 56.5px);
         overflow-y: auto;
     }
 
     .sidebar .menu-btn:checked~.menu {
-        max-height: 100%;
+        max-height: calc(100% - 56.5px);
     }
 
     .sidebar .menu-icon {
