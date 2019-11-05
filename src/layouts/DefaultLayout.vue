@@ -1,10 +1,12 @@
 <template>
   <section class="default_layout">
     <Sidebar/>
-    <Contents>
-      <Header :type="type"/>
-      <slot/>
-    </Contents>
+    <div class="full">
+      <Contents>
+        <Header :type="type"/>
+        <slot/>
+      </Contents>
+    </div>
   </section>
 </template>
 

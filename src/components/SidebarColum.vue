@@ -1,6 +1,7 @@
 <template>
   <li @click="linkTo(`/${name}/${type}`)" :class="{'active': isActive}">
     <a># {{type}}</a>
+    <a class="noti">10</a>
   </li>
 </template>
 

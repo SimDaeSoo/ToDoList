@@ -1,11 +1,14 @@
 <template>
-  <div></div>
+  <div class="tag">
+    #Front
+    <button class="tag_button">X</button>
+  </div>
 </template>
 
 <script lang = "ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class ArticleList extends Vue {
+export default class Tag extends Vue {
 }
 </script>
