@@ -5,11 +5,11 @@
       <WriteArticle/>
     </div>
 
-    <div v-if="$store.getters.articles.length>0">
+    <div v-if="articles.length>0">
       <div class="article_header">Articles</div>
       <div class="articles">
         <Article
-          v-for="(article) in $store.getters.articles"
+          v-for="(article) in articles"
           :key="'articles'+article.articleID"
           :article="article"
         />
@@ -23,6 +23,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import DefaultLayout from '../layouts/DefaultLayout.vue';
 import Article from '../components/Article.vue';
 import WriteArticle from '../components/WriteArticle.vue';
+import { getFilteredArticles } from '../utils';
+import { IArticle } from '../interfaces';
 
 @Component({
   components: {
@@ -36,5 +38,9 @@ export default class Home extends Vue {
   private name: string;
   @Prop()
   private type: string;
+
+  private get articles(): Array<IArticle> {
+    return getFilteredArticles(this.$store.getters.articles, { type: this.type, name: this.name });
+  }
 }
 </script>
