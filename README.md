@@ -46,11 +46,11 @@ $ npm run build
 ## 샘플페이지 (Example Page Preview)  
 | Chrome | Firefox | Safari |
 |---|:---:|---:|
-![Chrome](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Chrome.png) | ![Firefox](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Firefox.png) | ![Safari](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Safari.png)
+![Chrome](http://15.164.141.35/src/assets//Chrome.png) | ![Firefox](http://15.164.141.35/src/assets//Firefox.png) | ![Safari](http://15.164.141.35/src/assets//Safari.png)
 
 | Mobile-Safari | Mobile-Chrome |
 |---|:---:|
-![Chrome](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Mobile_Chrome.png) | ![Chrome](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Mobile_Safari.png)
+![Chrome](http://15.164.141.35/src/assets//Mobile_Chrome.png) | ![Chrome](http://15.164.141.35/src/assets//Mobile_Safari.png)
 
 | IE | IE-Edge |
 |---|:---:|
