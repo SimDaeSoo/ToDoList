@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <!-- <modals-container /> -->
+    <modals-container/>
   </div>
 </template>
 
@@ -17,13 +17,9 @@ export default class App extends Vue {
   private async initialize(): Promise<void> {
     const loadResult: boolean = await this.$store.dispatch('load');
     if (loadResult) {
-      Vue.toasted.show("Load is Success!", {
-        icon: "check"
-      } as any);
+      Vue.toasted.show("Load is Success!", { icon: "check" } as any);
     } else {
-      Vue.toasted.show("Load is Fail!", {
-        icon: "close"
-      } as any);
+      Vue.toasted.show("Load is Fail!", { icon: "close" } as any);
     }
   }
 }

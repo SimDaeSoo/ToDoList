@@ -4,6 +4,20 @@ export function isSameRoute(from: string, to): boolean {
     return from.toLowerCase().replace(/\//g, '') === to.toLowerCase().replace(/\//g, '');
 }
 
+export function getBlankArticle(articleID: number): IArticle {
+    let defaultArticle: IArticle = {
+        articleID: articleID,
+        contents: "",
+        begin: Date.now(),
+        end: Date.now(),
+        isImportant: false,
+        isDone: false,
+        tags: []
+    };
+
+    return defaultArticle;
+}
+
 export function getFilteredArticles(articles: Array<IArticle>, option: any): Array<IArticle> {
     const MILLISEC_FOR_DAY: number = 86400000;
     const result: Array<IArticle> = [];
