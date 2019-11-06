@@ -45,5 +45,10 @@ $ npm run build
 
 ## 각 사용된 라이브러리 공식 문서 (Library Documents)
 - [Vue.js Documents](https://kr.vuejs.org/v2/guide/index.html)
+- [Vuex Documents](https://vuex.vuejs.org/kr/)  
+- [Vue-router Documents](https://router.vuejs.org/kr/)  
 - [Typescript Documents](https://www.typescriptlang.org/docs/home.html)
 - [Webpack 4 Documents](https://webpack.js.org/concepts/)
+- [crypto-js Github](https://github.com/brix/crypto-js)  
+- [Vue-Toasted Github](https://madewithvuejs.com/vue-toasted)  
+- [Vue-Datepicker Github](https://github.com/charliekassel/vuejs-datepicker)

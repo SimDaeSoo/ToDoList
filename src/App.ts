@@ -8,7 +8,7 @@ import './styles/App.scss';
 import Toasted from 'vue-toasted';
 
 // Vue.use(VModal, { dynamic: true });
-Vue.use(Toasted, { duration: 2000, iconPack: 'material', theme: 'bubble' });
+Vue.use(Toasted, { duration: 2000, iconPack: 'material', theme: 'bubble', fullWidth: false });
 directives.autoTagParser();
 
 new Vue({

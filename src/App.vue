@@ -14,8 +14,17 @@ export default class App extends Vue {
     this.initialize();
   }
 
-  private initialize(): void {
-    this.$store.dispatch('load');
+  private async initialize(): Promise<void> {
+    const loadResult: boolean = await this.$store.dispatch('load');
+    if (loadResult) {
+      Vue.toasted.show("Load is Success!", {
+        icon: "check"
+      } as any);
+    } else {
+      Vue.toasted.show("Load is Fail!", {
+        icon: "close"
+      } as any);
+    }
   }
 }
 </script>

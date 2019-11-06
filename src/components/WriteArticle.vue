@@ -2,15 +2,17 @@
   <div class="article">
     <!-- Date Box -->
     <div class="date_box">
-      <Datepicker class="datepicker" v-model="begin" name="begin" :format="'yyyy-MM-dd'" />~
-      <Datepicker class="datepicker" v-model="end" name="end" :format="'yyyy-MM-dd'" />
+      <div class="date_header">Begin</div>
+      <Datepicker class="datepicker" v-model="begin" name="begin" :format="'yyyy-MM-dd'"/>
+      <div class="date_header">End</div>
+      <Datepicker class="datepicker" v-model="end" name="end" :format="'yyyy-MM-dd'"/>
     </div>
 
     <!-- Contents -->
     <div class="article_detail">
       <!-- TODO Detail -->
       <div class="article_contents">
-        <textarea placeholder="Insert your To Do List." v-model="article.contents" />
+        <textarea placeholder="Insert your To Do List." v-model="article.contents"/>
       </div>
 
       <!-- Tag Box -->
@@ -25,13 +27,13 @@
         />
 
         <!-- tag input -->
-        <input v-auto-tag-parser placeholder="Insert tags ex) #Front #Back" v-model="tagString" />
+        <input v-auto-tag-parser placeholder="Insert tags ex) #Front #Back" v-model="tagString">
       </div>
     </div>
 
     <!-- important button -->
     <div class="star_button" @click="toggleIsImportant">
-      <Star :class="{'star': true, 'active':article.isImportant }" />
+      <Star :class="{'star': true, 'active':article.isImportant }"/>
     </div>
 
     <!-- set button -->

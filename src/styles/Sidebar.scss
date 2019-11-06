@@ -2,7 +2,6 @@
     background-color: #444845;
     box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
     width: 100%;
-    height: 40px;
     z-index: 3;
     color: #e4e4e4;
     position: fixed;
@@ -69,7 +68,7 @@
     display: block;
     float: left;
     font-size: 1.2em;
-    padding: 9px 0px 7px 12px;
+    padding: 9px 0px 5px 12px;
     text-decoration: none;
     text-align: center;
 }
@@ -85,7 +84,7 @@
     cursor: pointer;
     display: inline-block;
     float: right;
-    padding: 18.5px 10px;
+    padding: 17.5px 10px;
     position: relative;
     user-select: none;
 }
@@ -162,12 +161,12 @@
     .sidebar .menu {
         clear: none;
         float: left;
-        max-height: calc(100% - 56.5px);
+        max-height: calc(100% - 60.5px);
         overflow-y: auto;
     }
 
     .sidebar .menu-btn:checked~.menu {
-        max-height: calc(100% - 56.5px);
+        max-height: calc(100% - 60.5px);
     }
 
     .sidebar .menu-icon {

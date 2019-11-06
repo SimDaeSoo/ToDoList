@@ -71,6 +71,7 @@ export const store = new Vuex.Store({
         },
         addArticle: (state, article: IArticle): void => {
             state.articleID++;
+            article.createdAt = Date.now();
             state.articles.push(article);
         },
         deleteArticle: (state, articleID: number): void => {

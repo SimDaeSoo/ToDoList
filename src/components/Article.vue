@@ -5,13 +5,15 @@
 
     <!-- Date Box -->
     <div class="date_box">
+      <div class="date_header">Begin</div>
       <Datepicker
         class="datepicker"
         v-model="begin"
         :name="article.articleID+'end'"
         :format="'yyyy-MM-dd'"
         :disabled="!isEditable"
-      />~
+      />
+      <div class="date_header">End</div>
       <Datepicker
         class="datepicker"
         v-model="end"
@@ -50,13 +52,13 @@
           placeholder="Insert tags ex) #Front #Back"
           v-model="tagString"
           :callback="removeTag"
-        />
+        >
       </div>
     </div>
 
     <!-- important button -->
     <div class="star_button" @click="toggleIsImportant">
-      <Star :class="{'star': true, 'active':article.isImportant }" />
+      <Star :class="{'star': true, 'active':article.isImportant }"/>
     </div>
 
     <!-- set button -->
