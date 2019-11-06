@@ -43,12 +43,26 @@ $ npm start
 $ npm run build
 ```
 
+## 샘플페이지 (Example Page Preview)  
+| Chrome | Firefox | Safari |
+|---|:---:|---:|
+![Chrome](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Chrome.png) | ![Firefox](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Firefox.png) | ![Safari](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Safari.png)
+
+| Mobile-Safari | Mobile-Chrome |
+|---|:---:|
+![Chrome](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Mobile_Chrome.png) | ![Chrome](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/tree/master/static/Mobile_Safari.png)
+
+| IE | IE-Edge |
+|---|:---:|
+
+
 ## 각 사용된 라이브러리 공식 문서 (Library Documents)
-- [Vue.js Documents](https://kr.vuejs.org/v2/guide/index.html)
+- [Vue.js Documents](https://kr.vuejs.org/v2/guide/index.html)  
 - [Vuex Documents](https://vuex.vuejs.org/kr/)  
-- [Vue-router Documents](https://router.vuejs.org/kr/)  
-- [Typescript Documents](https://www.typescriptlang.org/docs/home.html)
-- [Webpack 4 Documents](https://webpack.js.org/concepts/)
-- [crypto-js Github](https://github.com/brix/crypto-js)  
-- [Vue-Toasted Github](https://madewithvuejs.com/vue-toasted)  
-- [Vue-Datepicker Github](https://github.com/charliekassel/vuejs-datepicker)
+- [Vue Router Documents](https://router.vuejs.org/kr/)  
+- [Typescript Documents](https://www.typescriptlang.org/docs/home.html)  
+- [Webpack 4 Documents](https://webpack.js.org/concepts/)  
+- [CryptoJs Github](https://github.com/brix/crypto-js)  
+- [Vue-toasted Github](https://madewithvuejs.com/vue-toasted)  
+- [Vue-datepicker Github](https://github.com/charliekassel/vuejs-datepicker)  
+- [Vue-js-modal Github](https://github.com/euvl/vue-js-modal)

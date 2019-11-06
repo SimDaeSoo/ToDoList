@@ -26,7 +26,7 @@ body {
     text-align: -webkit-center;
     padding-top: 36px;
     margin-bottom: 0px;
-    padding-bottom: 240px;
+    padding-bottom: 0px;
 }
 
 @media (min-width: 48em) {
@@ -41,5 +41,6 @@ body {
         padding-top: 0px;
         margin-top: 20px;
         margin-bottom: 20px;
+        padding-bottom: 240px;
     }
 }
