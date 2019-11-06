@@ -13,8 +13,7 @@ HTML 템플릿은 자유, 수퍼 셋 언어 SASS/SCSS, TypeScript 활용
 
 Detail한 요구사항은 [HOMEWORK.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/HOMEWORK.md)참조  
 
-## 문제를 풀어나가는 과정 (History of Problem Solve)
-[SOLUTION.md](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/blob/master/SOLUTION.md) 참조  
+## 작업 이력 (History of Problem Solve)
 [작업 히스토리](https://github.com/SimDaeSoo/Kakao_Mobility_Front_Homework/commits/master) 참조  
 
 ## 개발 환경 (Environments)
@@ -42,6 +41,13 @@ $ npm start
 ```sh
 $ npm run build
 ```
+
+## 드리고 싶은 말
+이번 개발을 작은 프로젝트라서 즐겁게 짬짬히 만들었습니다. 결과에 관련없이 제겐 좋은 경험이 되겠지만,  
+개발자는 항상 성장을 목적으로 해야하는 직업인 만큼, 수 많은 지원자들의 개발 결과물을 보시며 지치시겠지만 가능하다면  
+다른 개발자들에 비해 '이것'이 아쉬웠다, '이것'을 좀 더 잘했으면 좋았을텐데 와 같은 피드백을 주신다면  
+작은 개발자에게 큰 힘이 될 것 같습니다. 감사합니다.  
+(tlaeotn123@gmail.com)
 
 ## 샘플페이지 (Example Page Preview)  
 | Chrome | Firefox | Safari |
