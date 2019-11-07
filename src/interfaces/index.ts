@@ -1,9 +1,11 @@
 import { IArticle } from './IArticle';
-import { Dictionary } from './Default';
+import { Map } from './Map';
 import { IStorageData } from './IStorageData';
+import { IFilterOptions } from './IFilterOptions';
 
 export {
     IArticle,
-    Dictionary,
-    IStorageData
+    Map,
+    IStorageData,
+    IFilterOptions
 }

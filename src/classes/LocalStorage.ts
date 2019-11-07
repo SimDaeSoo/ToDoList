@@ -1,4 +1,4 @@
-import { IStorageData } from '../interfaces';
+import { IStorageData, IArticle } from '../interfaces';
 import { SECRET_KEY } from '../../config';
 import * as crypto from "crypto-js";
 class LocalStorage {
@@ -14,32 +14,35 @@ class LocalStorage {
 
     private initialize(): void {
         if (!localStorage.data) {
-            const defaultData: IStorageData = { articles: [], articleID: 0 }
+            const defaultData: IStorageData = { articles: [], autoIncreamentID: 0 }
             this.save(defaultData);
         }
 
         this.load();
     }
 
-    public load(): any {
+    public load(): IStorageData {
         const loadData: IStorageData = JSON.parse(localStorage.getItem('data'));
 
-        loadData.articles.forEach((article): void => {
-            article.contents = crypto.AES.decrypt(article.contents, SECRET_KEY).toString(crypto.enc.Utf8);
+        const decryptArticles: Array<IArticle> = loadData.articles.map((article: IArticle): IArticle => {
+            const copyArticle: IArticle = Object.assign({}, article);
+            copyArticle.contents = crypto.AES.decrypt(article.contents, SECRET_KEY).toString(crypto.enc.Utf8);
+            return copyArticle;
         });
+
+        loadData.articles = decryptArticles;
         return loadData;
     }
 
     public save(data: IStorageData): void {
-        data.articles.forEach((article): void => {
-            article.contents = crypto.AES.encrypt(article.contents, SECRET_KEY).toString();
+        const encryptArticles: Array<IArticle> = data.articles.map((article: IArticle): IArticle => {
+            const copyArticle: IArticle = Object.assign({}, article);
+            copyArticle.contents = crypto.AES.encrypt(article.contents, SECRET_KEY).toString();
+            return copyArticle;
         });
-        localStorage.setItem('data', JSON.stringify(data));
 
-        // 오브젝트의 contents를 직접 바꿔주기 때문에 다시 복호화 해놓는다. 안하면 화면에 암호화 상태로 뜸.
-        data.articles.forEach((article): void => {
-            article.contents = crypto.AES.decrypt(article.contents, SECRET_KEY).toString(crypto.enc.Utf8);
-        });
+        data.articles = encryptArticles;
+        localStorage.setItem('data', JSON.stringify(data));
     }
 
     public clear(): void {

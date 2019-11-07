@@ -10,7 +10,7 @@
       <div class="articles">
         <Article
           v-for="(article) in articles"
-          :key="'articles'+article.articleID"
+          :key="'write_articles'+article.articleID"
           :article="article"
         />
       </div>

@@ -1,13 +1,13 @@
 <template>
   <div class="sidebar">
     <a class="logo" @click="toggle">- TODO List</a>
-    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <input class="menu-btn" type="checkbox" id="menu-btn">
     <label class="menu-icon" for="menu-btn" ref="closeNav">
       <span class="navicon"></span>
     </label>
     <ul class="menu">
       <li class="search">
-        <input type="text" placeholder="Search" v-model="searchString" @keydown.enter="search" />
+        <input type="text" placeholder="Search" v-model="searchString" @keydown.enter="search">
       </li>
     </ul>
     <ul class="menu">
@@ -40,7 +40,6 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import SidebarColum from "./SidebarColum.vue";
 import { isSameRoute } from "../utils";
-import { Dictionary } from "../interfaces";
 
 @Component({
   components: {

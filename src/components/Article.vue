@@ -112,9 +112,9 @@ export default class Article extends Vue {
 
     const saveResult: boolean = await this.$store.dispatch("save");
     if (saveResult) {
-      Vue.toasted.show("Save is Success!", { icon: "check" } as any);
+      this.$toasted.show("Save is Success!", { icon: "check" as any });
     } else {
-      Vue.toasted.show("Save is Fail!", { icon: "close" } as any);
+      this.$toasted.show("Save is Fail!", { icon: "close" as any });
     }
   }
 
@@ -166,8 +166,8 @@ export default class Article extends Vue {
     this.tagString = "";
 
     if (this.article.tags.indexOf(matchedString) >= 0) {
-    } else if (matchedString.length > 15) {
-      this.showModal('태그의 길이는 15자 이내만 가능합니다.');
+    } else if (matchedString.length > 15 || matchedString.length <= 0) {
+      this.showModal('태그의 길이는 1자 ~ 15자 까지 가능합니다.');
     } else if (this.article.tags.length >= 4) {
       this.showModal('4개 이하의 태그까지만 허용됩니다.');
     } else {

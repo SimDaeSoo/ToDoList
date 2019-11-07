@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
         defaultCategories: ['All', 'Upcoming', 'Important', 'Done'],
         tags: [],
         articles: [],
-        articleID: 0
+        autoIncreamentID: 0
     },
     getters: {
         articles: (state): Array<IArticle> => {
@@ -38,15 +38,15 @@ export const store = new Vuex.Store({
         tags: (state): Array<string> => {
             return state.tags;
         },
-        articleID: (state): number => {
-            return state.articleID;
+        autoIncreamentID: (state): number => {
+            return state.autoIncreamentID;
         }
     },
     mutations: {
         load: (state): void => {
             const loadData: IStorageData = LocalStorage.load();
             state.articles = loadData.articles;
-            state.articleID = loadData.articleID;
+            state.autoIncreamentID = loadData.autoIncreamentID;
 
             state.tags.splice(0, state.tags.length);
             state.articles.forEach((article: IArticle): void => {
@@ -58,7 +58,7 @@ export const store = new Vuex.Store({
             });
         },
         save: (state): void => {
-            LocalStorage.save({ articles: state.articles, articleID: state.articleID });
+            LocalStorage.save({ articles: state.articles, autoIncreamentID: state.autoIncreamentID });
 
             state.tags.splice(0, state.tags.length);
             state.articles.forEach((article: IArticle): void => {
@@ -70,7 +70,8 @@ export const store = new Vuex.Store({
             });
         },
         addArticle: (state, article: IArticle): void => {
-            state.articleID++;
+            state.autoIncreamentID++;
+            article.articleID = state.autoIncreamentID;
             article.createdAt = Date.now();
             state.articles.push(article);
         },
@@ -89,6 +90,7 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
+        // 추후 await이 필요한 back-end 통신이 있을지 모르니 dispatch로 작성.
         load({ commit }): boolean { commit('load'); return true; },
         save({ commit }): boolean { commit('save'); return true; },
         addArticle({ commit }, article: IArticle): void { commit('addArticle', article); },
