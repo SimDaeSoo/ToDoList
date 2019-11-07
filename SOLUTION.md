@@ -6,11 +6,11 @@
 따라서 본 프로젝트를 처음 진행하는 나로서는 그냥 막 진행하기 보다는 진행하기 전 모범사례 To Do List 어플을 리서치 및 벤치마킹하여 비슷한 형태로 만들어 볼 것을 생각하게 되었으며
 다음의 몇가지에서 영감을 받고 벤치마킹하여 비슷한 식으로 제작하였다.
 
-- Microsoft To-Do Application (Layout)
-[Microsoft To-Do](http://15.164.141.35/src/assets/github_image/image_1.png)
+### Microsoft To-Do Application (Layout)  
+![Microsoft To-Do](http://15.164.141.35/src/assets/github_image/image_1.png)
 
-- Notion (Hash Tag)
-[Notion](http://15.164.141.35/src/assets/github_image/image_2.png)
+### Notion (Hash Tag)  
+![Notion](http://15.164.141.35/src/assets/github_image/image_2.png)
 
 ## createdAt 외에 왜? begin, end에 대간 시간값을 넣었는가?
 기본적으로 요구사항은 만들어진 List의 생성 날짜만 기입하면 된다고 되어있다. 하지만 여기에 추가적으로 이 앱을 쓴다고 생각했을 때 나는 해당 일정을 알고싶을 것 같다는 판단을 하였으며
@@ -21,8 +21,8 @@ default로는 오늘 내에 처리해야하는 업무로 작성되지만, 클릭
 2. begin : 일정의 시작 시간
 3. end : 일정의 종료 시간
 
-- 날짜설정
-[Set Date](http://15.164.141.35/src/assets/github_image/image_7.png)
+### 날짜설정  
+![Set Date](http://15.164.141.35/src/assets/github_image/image_7.png)
 
 ## 해쉬태그를 왜 만들었는가?
 기본적으로 그냥 To Do List 를 만든다면, 정말 각기 다른 프로젝트가 생성 될 것이다.  
@@ -31,8 +31,8 @@ default로는 오늘 내에 처리해야하는 업무로 작성되지만, 클릭
 각자 진행하는 To Do 의 분야를 해쉬태그(Hash Tag)를 이용해서 분류하는 방식이 사용성이 좋았던 기억이 있다. 따라서 해당 기능을 추가하게 되었다.
 (Tag의 길이제한, 갯수제한을 둔 이유는 Mobile에서 layout이 좀 깨져서 그렇다.)
 
-- Hash Tag
-[Hash Tag](http://15.164.141.35/src/assets/github_image/image_2.png)
+### Hash Tag  
+![Hash Tag](http://15.164.141.35/src/assets/github_image/image_2.png)
 
 ## 암호화 및 복호화
 예전에 POC용도의 게임을 만들 때 Back단과 Front단을 혼자서 작성했던 때가 있다. 그 때 사실 Front는 https를 믿고 pure text로 정보를 발송하고,  
@@ -41,11 +41,11 @@ Back단 에서는 해당 pure text를 node의 모듈인 crypto를 사용해서 �
 (key또한 git으로 옮긴다는게 말이 안되지만. 요구사항의 목표는 단지 암호화된 상태로 Local Storage에 저장되길 바라는 것 같기에 우선 그냥 진행했다.)  
 [CryptoJs Github](https://github.com/brix/crypto-js)참조  
 
-- Local Storage에 저장된 암호화 된 데이터
-[Local Storage에 암호화 된 데이터.](http://15.164.141.35/src/assets/github_image/image_4.png)
+### Local Storage에 저장된 암호화 된 데이터  
+![Local Storage에 암호화 된 데이터.](http://15.164.141.35/src/assets/github_image/image_4.png)
 
-- 암호화, 복호화 과정
-[암호화, 복호화 과정.](http://15.164.141.35/src/assets/github_image/image_5.png)
+### 암호화, 복호화 과정  
+![암호화, 복호화 과정.](http://15.164.141.35/src/assets/github_image/image_5.png)
 
 ## 검색기능
 기본적으로 ToDo List가 많아지면 찾기가 힘들다. 그래서 아마 요구사항에 Done된 목록을 지울 수 있고, Done목록은 아래로 정렬해 달라고 하신 것 같다.  
@@ -54,8 +54,8 @@ Back단 에서는 해당 pure text를 node의 모듈인 crypto를 사용해서 �
 그렇기 때문에 Article의 Contents, Tag에서 검색한 String이 있는지 판단하여 있으면 반환하는 아주 간단한 검색기능을 넣어두었다. (성능 Issue는 기간이 짧아 확인하지 못하였다.)
 (물론 Tag로 분류된 게시글만 해도 쓸모있을 수 있겠으나, 정말 List가 많아진다면??.. Tag또한 방법이 아닐것이다.)
 
-- 검색기능
-[검색기능](http://15.164.141.35/src/assets/github_image/image_6.png)
+### 검색기능  
+![검색기능](http://15.164.141.35/src/assets/github_image/image_6.png)
 
 ## 저장기능
 보통 "저장"한다 라는것은 Back-End의 기능이고 Save, Load, Edit, Add등의 기능이 있을 것 이라 판단되었는데, 이것을 Local Storage로 처리하면 되는 것 이라고 판단되었다.  
@@ -73,9 +73,6 @@ Category는 다음과 같이 분류하였다.
 해당 페이지를 핸드폰으로도 볼 수 있었으면 좋겠다고 판단하여 모바일까지 CSS로 컨트롤 하도록 노력했다.  
 하지만 UI레이아웃을 잘 잡지 못하여 시간 설정과, Important기능은 보이지 않는다.(길이때문에 너무 빡셈..)  
 따라서 ToDo List의 핵심 기능인 추가, 제거, 완료, 수정, Tag 기능들만 사용할 수 있으며, 날짜설정 및 Important설정은 불가하다.
-| Mobile-Safari | Mobile-Chrome |
-|---|:---:|
-![Mobile Safari](http://15.164.141.35/src/assets/github_image/Mobile_Safari.png) | ![Mobile Chrome](http://15.164.141.35/src/assets/github_image/Mobile_Chrome.png)
 
 ## Toast Message & Modal
 사실 Toast Message 와 Modal은 해당 모듈만 만들라 라고 해도 잘 만들려면 일주일로는 턱없이 부족한 모듈일 것이다.  

@@ -58,34 +58,34 @@ $ npm run build
 ## 기능설명 (Explain of product)
 기본적으로 To Do List는 Done을 아래로 정렬하며, Important는 위로 정렬되도록 되이있다.
 
-- Side Bar
-각 Article들의 카테고리별 현재 갯수를 알 수 있다.
-[Side Bar](http://15.164.141.35/src/assets/github_image/image_8.png)
+### Side Bar  
+>각 Article들의 카테고리별 현재 갯수를 알 수 있다.  
+~[Side Bar](http://15.164.141.35/src/assets/github_image/image_8.png)
 
-- Search
-각 Article들의 Contents 및, Tag에 달린 내용을 검색해서 찾아준다. (강조는 없다..) 삽입 및 Enter입력 시 검색됨.
-[Search](http://15.164.141.35/src/assets/github_image/image_9.png)
+### Search  
+>각 Article들의 Contents 및, Tag에 달린 내용을 검색해서 찾아준다. (강조는 없다..) 삽입 및 Enter입력 시 검색됨.  
+![Search](http://15.164.141.35/src/assets/github_image/image_9.png)
 
-- Begin & End Date
-createdAt 과는 별도로 각 Article의 작업 시작시간 및, 작업 종료 시간을 설정할 수 있다.
-[Date](http://15.164.141.35/src/assets/github_image/image_10.png)
+### Begin & End Date  
+>createdAt 과는 별도로 각 Article의 작업 시작시간 및, 작업 종료 시간을 설정할 수 있다.  
+![Date](http://15.164.141.35/src/assets/github_image/image_10.png)
 
-- Contents
-각 Article의 내용을 삽입할 수 있다. (Local Stroage에는 암호화 되어서 저장된다.)
-[Contents](http://15.164.141.35/src/assets/github_image/image_11.png)
+### Contents  
+>각 Article의 내용을 삽입할 수 있다. (Local Stroage에는 암호화 되어서 저장된다.)  
+![Contents](http://15.164.141.35/src/assets/github_image/image_11.png)
 
-- Tags
-각 Article의 태그를 삽입할 수 있다. 태그의 양식은 '#~~~~'과 같으며 0자 ~ 15자, 4개 이하를 작성할 수 있으며  
-'#'과 스페이스를 인식하여 태그가 분리된다.
-[Tags](http://15.164.141.35/src/assets/github_image/image_12.png)
+### Tags  
+>각 Article의 태그를 삽입할 수 있다. 태그의 양식은 '#\~\~'과 같으며 0자 ~ 15자, 4개 이하를 작성할 수 있으며  
+'#'과 스페이스를 인식하여 태그가 분리된다.  
+![Tags](http://15.164.141.35/src/assets/github_image/image_12.png)
 
-- Important
-각 Article의 중요성을 마킹할 수 있다. important가 설정된 article은 위쪽에 노출된다.
-[Important](http://15.164.141.35/src/assets/github_image/image_13.png)
+### Important  
+>각 Article의 중요성을 마킹할 수 있다. important가 설정된 article은 위쪽에 노출된다.  
+![Important](http://15.164.141.35/src/assets/github_image/image_13.png)
 
-- Done
-각 Article의 처리 완료결과를 마킹할 수 있다. Done된 article은 아래쪽에 노출된다.
-[Done](http://15.164.141.35/src/assets/github_image/image_14.png)
+### Done  
+>각 Article의 처리 완료결과를 마킹할 수 있다. Done된 article은 아래쪽에 노출된다.  
+![Done](http://15.164.141.35/src/assets/github_image/image_14.png)
 
 ## 드리고 싶은 말
 이번 개발을 작은 프로젝트라서 즐겁게 짬짬히 만들었습니다. 결과에 관련없이 제겐 좋은 경험이 되겠지만,  

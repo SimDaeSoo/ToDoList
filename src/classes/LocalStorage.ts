@@ -13,9 +13,13 @@ class LocalStorage {
     }
 
     private initialize(): void {
-        if (!localStorage.data) {
+        const loadData: IStorageData = JSON.parse(localStorage.getItem('data'));
+
+        if (!loadData || !loadData.articles || loadData.autoIncreamentID === undefined) {
             const defaultData: IStorageData = { articles: [], autoIncreamentID: 0 }
+            this.clear();
             this.save(defaultData);
+            return;
         }
 
         this.load();
