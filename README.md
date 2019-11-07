@@ -60,7 +60,7 @@ $ npm run build
 
 ### Side Bar  
 >각 Article들의 카테고리별 현재 갯수를 알 수 있다.  
-~[Side Bar](http://15.164.141.35/src/assets/github_image/image_8.png)
+![Side Bar](http://15.164.141.35/src/assets/github_image/image_8.png)
 
 ### Search  
 >각 Article들의 Contents 및, Tag에 달린 내용을 검색해서 찾아준다. (강조는 없다..) 삽입 및 Enter입력 시 검색됨.  
